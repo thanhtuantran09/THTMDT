@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BaodientuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AD">
+    <Key>
+      <PropertyRef Name="IDAdmin" />
+    </Key>
+    <Property Name="IDAdmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenAdmin" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pass" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="BaiBao">
+    <Key>
+      <PropertyRef Name="MaBB" />
+    </Key>
+    <Property Name="MaBB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TieuDe" Type="nvarchar(max)" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+    <Property Name="NgayTao" Type="date" />
+    <Property Name="HinhAnh" Type="nvarchar(max)" />
+    <Property Name="MaTG" Type="int" />
+    <Property Name="MaDM" Type="int" />
+    <Property Name="MaTT" Type="int" />
+  </EntityType>
+  <EntityType Name="Danhmuc">
+    <Key>
+      <PropertyRef Name="MaDM" />
+    </Key>
+    <Property Name="MaDM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDM" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DoiTac">
+    <Key>
+      <PropertyRef Name="MaDoiTac" />
+    </Key>
+    <Property Name="MaDoiTac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDT" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="20" />
+    <Property Name="matkhau" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DonHang">
+    <Key>
+      <PropertyRef Name="MaDH" />
+    </Key>
+    <Property Name="MaDH" Type="int" Nullable="false" />
+    <Property Name="NgayDat" Type="date" />
+    <Property Name="TongTien" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="IDTrangThaiDH" Type="int" />
+    <Property Name="MaDoiTac" Type="int" />
+  </EntityType>
+  <EntityType Name="LoaiQC">
+    <Key>
+      <PropertyRef Name="IDLoaiQC" />
+    </Key>
+    <Property Name="IDLoaiQC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoaiQC" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="QuangCao">
+    <Key>
+      <PropertyRef Name="MaQC" />
+    </Key>
+    <Property Name="MaQC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TieuDe" Type="nvarchar(max)" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+    <Property Name="NgayBD" Type="date" />
+    <Property Name="NgayKT" Type="date" />
+    <Property Name="HinhAnh" Type="nvarchar(max)" />
+    <Property Name="GiaTien" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="IDLoaiQC" Type="int" />
+  </EntityType>
+  <EntityType Name="TacGia">
+    <Key>
+      <PropertyRef Name="MaTG" />
+    </Key>
+    <Property Name="MaTG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenTG" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="500" />
+    <Property Name="Matkhau" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TTBB">
+    <Key>
+      <PropertyRef Name="MaTT" />
+    </Key>
+    <Property Name="MaTT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenTT" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TTDH">
+    <Key>
+      <PropertyRef Name="IDTrangThaiDH" />
+    </Key>
+    <Property Name="IDTrangThaiDH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrangthaiDH" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TTQC">
+    <Key>
+      <PropertyRef Name="IDTrangthaiQC" />
+    </Key>
+    <Property Name="IDTrangthaiQC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrangthaiQC" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__BaiBao__MaDM__571DF1D5">
+    <End Role="Danhmuc" Type="Self.Danhmuc" Multiplicity="0..1" />
+    <End Role="BaiBao" Type="Self.BaiBao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Danhmuc">
+        <PropertyRef Name="MaDM" />
+      </Principal>
+      <Dependent Role="BaiBao">
+        <PropertyRef Name="MaDM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BaiBao__MaTG__5629CD9C">
+    <End Role="TacGia" Type="Self.TacGia" Multiplicity="0..1" />
+    <End Role="BaiBao" Type="Self.BaiBao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TacGia">
+        <PropertyRef Name="MaTG" />
+      </Principal>
+      <Dependent Role="BaiBao">
+        <PropertyRef Name="MaTG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BaiBao__MaTT__59FA5E80">
+    <End Role="TTBB" Type="Self.TTBB" Multiplicity="0..1" />
+    <End Role="BaiBao" Type="Self.BaiBao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTBB">
+        <PropertyRef Name="MaTT" />
+      </Principal>
+      <Dependent Role="BaiBao">
+        <PropertyRef Name="MaTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonHang__IDTrang__4AB81AF0">
+    <End Role="TTDH" Type="Self.TTDH" Multiplicity="0..1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTDH">
+        <PropertyRef Name="IDTrangThaiDH" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="IDTrangThaiDH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonHang__MaDoiTa__4BAC3F29">
+    <End Role="DoiTac" Type="Self.DoiTac" Multiplicity="0..1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoiTac">
+        <PropertyRef Name="MaDoiTac" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="MaDoiTac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QuangCao__IDLoai__52593CB8">
+    <End Role="LoaiQC" Type="Self.LoaiQC" Multiplicity="0..1" />
+    <End Role="QuangCao" Type="Self.QuangCao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiQC">
+        <PropertyRef Name="IDLoaiQC" />
+      </Principal>
+      <Dependent Role="QuangCao">
+        <PropertyRef Name="IDLoaiQC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BaodientuModelStoreContainer">
+    <EntitySet Name="AD" EntityType="Self.AD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaiBao" EntityType="Self.BaiBao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Danhmuc" EntityType="Self.Danhmuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoiTac" EntityType="Self.DoiTac" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiQC" EntityType="Self.LoaiQC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuangCao" EntityType="Self.QuangCao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TacGia" EntityType="Self.TacGia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TTBB" EntityType="Self.TTBB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TTDH" EntityType="Self.TTDH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TTQC" EntityType="Self.TTQC" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BaiBao__MaDM__571DF1D5" Association="Self.FK__BaiBao__MaDM__571DF1D5">
+      <End Role="Danhmuc" EntitySet="Danhmuc" />
+      <End Role="BaiBao" EntitySet="BaiBao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BaiBao__MaTG__5629CD9C" Association="Self.FK__BaiBao__MaTG__5629CD9C">
+      <End Role="TacGia" EntitySet="TacGia" />
+      <End Role="BaiBao" EntitySet="BaiBao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BaiBao__MaTT__59FA5E80" Association="Self.FK__BaiBao__MaTT__59FA5E80">
+      <End Role="TTBB" EntitySet="TTBB" />
+      <End Role="BaiBao" EntitySet="BaiBao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonHang__IDTrang__4AB81AF0" Association="Self.FK__DonHang__IDTrang__4AB81AF0">
+      <End Role="TTDH" EntitySet="TTDH" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonHang__MaDoiTa__4BAC3F29" Association="Self.FK__DonHang__MaDoiTa__4BAC3F29">
+      <End Role="DoiTac" EntitySet="DoiTac" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QuangCao__IDLoai__52593CB8" Association="Self.FK__QuangCao__IDLoai__52593CB8">
+      <End Role="LoaiQC" EntitySet="LoaiQC" />
+      <End Role="QuangCao" EntitySet="QuangCao" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,4 @@
+﻿@model THTMDT.Models.Danhmuc
+
+@Html.DropDownListFor(model => model.MaDM, new SelectList(Model.ListDM.OrderBy(model => model.TenDM), "MaDM", "TenDM"),
+    "--Chọn danh mục--", new { @class = "tafi-select", @id = "tafi-select-categories", @type = "text", @tabindex = "0" })

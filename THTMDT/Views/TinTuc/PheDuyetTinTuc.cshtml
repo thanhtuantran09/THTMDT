@@ -1,0 +1,170 @@
+﻿@model THTMDT.Models.BaiBao
+
+@{
+    ViewBag.Title = "PheDuyetTinTuc";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+
+<div class="col l-9-1 m-12 c-12">
+    <div class="home-product">
+        <div class="row sm-gutter" style="padding-right: 16px;">
+            <div class="product-edit">
+                <div class="product-edit__container" style="min-height: 0;">
+                    <div class="title-page">
+                        <div class="title-page__link">
+                            <a href="@Url.Action("TinTuc", "TinTuc")" class="title-page__link-label">Trang chủ</a>
+                            <i class='bx bx-chevron-right'></i>
+                            <a href="@Url.Action("QLTinTuc", "TinTuc")" class="title-page__link-label">Tin tức</a>
+                            <i class='bx bx-chevron-right'></i>
+                            <a href="@Url.Action("PheDuyetTinTuc", "TinTuc")" class="title-page__link-label" style="color: black;"> Cập nhật tin tức</a>
+                        </div>
+                    </div>
+                    @using (Html.BeginForm("PheDuyetTinTuc", "Tintuc", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("MaBB", Model.MaBB)
+                        @Html.Hidden("HinhAnh", Model.HinhAnh)
+                        <div class="product-edit__main">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <section class="product-edit__section" id="section-basic-info">
+                                <div class="product-detail-panel product-basic-info">
+                                    <div class="panel-header">
+                                        <div class="panel-title">
+                                            <div class="basic-info-title">Thông tin tin tức</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-content-wrapper">
+                                        <div class="panel-content">
+
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Tên tin tức</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        <span class="detail-info__name">@Model.TieuDe</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Nội dung</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        <span class="detail-info__name">@Model.NoiDung</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Tên ngành hàng</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        @*@{Html.RenderAction("ChonDanhMuc", "TinTuc");}*@
+                                                                        <span class="detail-info__name">  @(Model.Danhmuc==null?"":Model.Danhmuc.TenDM)</span>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-content-wrapper">
+                                                <div class="panel-content">
+                                                    @* Hình ảnh *@
+                                                    <div class="edit-row" style="height: 220px;">
+                                                        <div class="edit-label edit-title">
+                                                            <span><span style="color: red;">*</span> Hình ảnh tin tức</span>
+                                                        </div>
+                                                        <div class="edit-main image-offset" style="height: 135px; max-height: 135px;">
+                                                            <div style="line-height: 40px;">
+                                                                <div class="edit-label edit-title">
+                                                                    <span><span style="color: red;">*</span> Hình ảnh tỷ lệ 1:1</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="edit-main tafi-image-manager" style="padding: 0 25px;">
+                                                                <div class="container" style="flex-direction: row; justify-content: flex-start;">
+                                                                    <div class="wrapper-img" style="display: flex; flex-direction: column-reverse;">
+                                                                        <div class="preview-container">
+                                                                            @* Import Images of Products *@
+                                                                            <img src="@Url.Content(Model.HinhAnh)" alt="Alternate Text" id="previewImg1" class="preview-image-product" />
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panel-content">
+                                                <div class="edit-row">
+                                                    <div class="edit-label edit-title">
+                                                        <span><span style="color: red;">*</span> Trạng thái sản phẩm</span>
+                                                    </div>
+                                                    <div class="edit-main">
+                                                        <div class="popover-wrap">
+                                                            <div class="custom-len-calc-input product-edit-form-item">
+                                                                <div class="product-edit-form-item-content">
+                                                                    <div class="tafi-input">
+                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                            @{ Html.RenderAction("ChonPheDuyet", "TinTuc");}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </section>
+
+
+                            <div class="product-selected-fix shopee-fix-bottom-card">
+                                <div class="fix-container">
+                                    <div class="container1">
+                                        <div class="container-left"></div>
+                                        <div class="container-right btn-group">
+                                            <a href="@Url.Action("TinTuc", "TinTuc")" class="tafi-button--xl-large tafi-button tafi-button--normal"><span>Hủy</span></a>
+                                            <button class="tafi-button--xl-large tafi-button tafi-button-primary tafi-button--normal" style="margin-left: 13px;" id="button-save"><span>Lưu</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

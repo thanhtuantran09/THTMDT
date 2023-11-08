@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ebc2e635cf945b5bc94375aeacd5b28" Name="Diagram1">
+        <EntityTypeShape EntityType="BaodientuModel.AD" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaodientuModel.BaiBao" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaodientuModel.Danhmuc" Width="1.5" PointX="2.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaodientuModel.DoiTac" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaodientuModel.DonHang" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaodientuModel.LoaiQC" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaodientuModel.QuangCao" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaodientuModel.TacGia" Width="1.5" PointX="2.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaodientuModel.TTDH" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaodientuModel.TTQC" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="BaodientuModel.FK__BaiBao__MaDM__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="BaodientuModel.FK__BaiBao__MaTG__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="BaodientuModel.FK__DonHang__MaDoiTa__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="BaodientuModel.FK__DonHang__IDTrang__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="BaodientuModel.FK__QuangCao__IDLoai__52593CB8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BaodientuModel.TTBB" Width="1.5" PointX="2.75" PointY="11.75" />
+        <AssociationConnector Association="BaodientuModel.FK__BaiBao__MaTT__59FA5E80" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,4 @@
+﻿@model THTMDT.Models.TTBB
+
+@Html.DropDownListFor(model => model.MaTT, new SelectList(Model.ListPD.OrderBy(model => model.TenTT), "MaTT", "TenTT"),
+    "--Chọn trạng thái--", new { @class = "tafi-select", @id = "tafi-select-categories", @type = "text", @tabindex = "0" })
