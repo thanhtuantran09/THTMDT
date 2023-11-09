@@ -18,10 +18,10 @@
                             <i class='bx bx-chevron-right'></i>
                             <a href="@Url.Action("TinTuc", "TinTuc")" class="title-page__link-label">Tin tức</a>
                             <i class='bx bx-chevron-right'></i>
-                            <a href="@Url.Action("PheDuyetTinTuc", "TinTuc")" class="title-page__link-label" style="color: black;"> Phê duyệt tin tức</a>
+                            <a href="@Url.Action("CapNhatTinTuc", "TinTuc")" class="title-page__link-label" style="color: black;"> Phê duyệt tin tức</a>
                         </div>
                     </div>
-                    @using (Html.BeginForm("PheDuyetTinTuc", "Tintuc", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("CapNhatTinTuc", "Tintuc", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.Hidden("MaBB", Model.MaBB)

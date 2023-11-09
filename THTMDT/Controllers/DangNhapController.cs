@@ -56,7 +56,7 @@ namespace THTMDT.Controllers
             Session["Email"] = objUserGet.Email;
             Session["Ten"] = objUserGet.TenAdmin;
 
-            return RedirectToAction("TinTuc", "TinTuc");
+            return RedirectToAction("QLTinTuc", "TinTuc");
 
 
         }
